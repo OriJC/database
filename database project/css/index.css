@@ -1,0 +1,92 @@
+.tableform{
+    width: 900px ;
+    padding: 20px;
+    margin-top:50px;
+    color:white;
+    border: solid 1px #d0d8e0;
+}
+
+.imgclass{
+    height:30px;
+    width:30px;
+}
+
+.imgclass:hover{
+    height:40px;
+    width:40px;
+}
+td,th,tr{
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    
+}
+
+tr{
+    border: solid 1px #d0d8e0;
+}
+
+th:nth-child(1)
+{
+    background-color: #0f1d2b;
+}
+
+
+td:nth-child(1)
+{
+    background-color: #0f1d2b;
+}
+.btn{
+    text-decoration:  none;
+    border-radius: 5px;
+    padding:6px;
+    width:50px;
+    background-color:#dddddd;
+    color:gray;
+    box-shadow: -4px -4px 5px #333333;
+}
+
+.btn:hover{
+    background-color: #777777;
+}
+
+
+body{
+    background-color: #09141f;
+}
+
+a.class:link{
+    color:white;
+}
+
+a.aclass:hover{
+    color: gray;
+}
+
+a.aclass:visited{
+    color:white;
+}
+
+a.aclass:active{
+    color:gray;
+
+}
+
+.logo{
+    height:50px;
+    width:50px;
+}
+
+.btnSuc{
+    text-decoration:  none;
+    border-radius: 5px;
+    padding:6px;
+    width:70px;
+    background-color:#dddddd;
+    color:gray;
+    box-shadow: -4px -4px 5px #333333;
+}
+
+.btnSuc:hover{
+    background-color: White;
+}
