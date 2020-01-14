@@ -55,23 +55,6 @@ body{
     background-color: #09141f;
 }
 
-a.class:link{
-    color:white;
-}
-
-a.aclass:hover{
-    color: gray;
-}
-
-a.aclass:visited{
-    color:white;
-}
-
-a.aclass:active{
-    color:gray;
-
-}
-
 .logo{
     height:50px;
     width:50px;
