@@ -43,7 +43,7 @@
             <th>Team_Name</th>
             <th>Team_ID</th>
             <th>T_M_SSID</th>
-            <th>T_Coach_ID</th>
+            <th>T_coach_ID</th>
             <th>T_Game_ID</th>
             </tr>";
 
@@ -54,7 +54,7 @@
                 <td>'.$row['Team_Name'].'</td>
                 <td>'.$row['Team_ID'].'</td>
                 <td>'.$row['T_M_SSID'].'</td>
-                <td>'.$row['T_Coach_ID'].'</td>
+                <td>'.$row['T_coach_ID'].'</td>
                 <td>'.$row['T_Game_ID'].'</td>
                 </tr>';
             }

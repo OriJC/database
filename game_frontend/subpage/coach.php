@@ -49,7 +49,7 @@
                     </a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="./Has_joined.php">Has Joined</a>
-                    </div>
+                      <a class="dropdown-item" href="./Is_sponsor_of.php">Team Sponsor</a>                    </div>
                   </li>
               </ul>
           

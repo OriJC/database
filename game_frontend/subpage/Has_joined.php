@@ -10,13 +10,7 @@
 
     <body>
 
-    <form>
-            T_SSID: <input type = "text" name = "T_SSID">
-                        <br/>
-            Com_ID: <input type = "text" name = "Com_ID">
-                        <br/>
 
-    </form>
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             
@@ -58,37 +52,66 @@
                     </a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="./Has_joined.php">Has Joined</a>
-                    </div>
+                      <a class="dropdown-item" href="./Is_sponsor_of.php">Team Sponsor</a>                    </div>
                   </li>
               </ul>
           
                        
             
         </nav>
-        <table class="tableform" align="center" >
-            <th>P_SSID</th>
+
+
+        <table class="tableform" align="center">
+        <?php
+        $db_host='127.0.0.1';
+        $db_user='root';
+        $db_pass='';
+        $db_name='gamedb';
+
+        $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+        if (!$conn)
+        {
+            die ('failed to connect mysql database'.mysql_connect_error());
+        }
+
+        $sql = 'select * from has_joined';
+        $query = mysqli_query($conn,$sql);
+
+            if (!$query)
+            {
+                die ('error found'.mysqli_error($conn));
+            }
+
+            echo "
+            <table class='tableform' align='center'>
+            <tr>
+            <th>T_SSID</th>
             <th>Com_ID</th>
-        <tr>
-            <td >001</td>
-            <td>333</td>
-        </tr>
-        <tr>
-            <td >002</td>
-            <td>445</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-         </tr>
-    </table><br>
+            </tr>";
+
+            while ($row = mysqli_fetch_array($query))
+            {
+                echo ' <tr>
+                <td>'.$row['T_SSID'].'</td>
+                <td>'.$row['Com_ID'].'</td>
+                </tr>';
+            }
+
+        echo "</table>";
+        ?>
+        </table>
+
+
+
+    <div align = "center">
+        <form action="Has_joined_insert.php" method = "post" class="tableform" align = "left">
+            T_SSID: <input type = "text" name = "T_SSID">
+                        <br/>
+            Com_ID: <input type = "text" name = "Com_ID">
+                        <br/>
+            <input type="submit" value ="Insert">
+        </form>
+    </div>
     <div align=center>
         <a class="btn" href="#">1</a>
     </div>

@@ -9,12 +9,6 @@
     </head>
 
     <body>
-    <form>
-            Sponsor_ID: <input type = "text" name = "Sponsor_ID">
-                        <br/>
-            Sponsor_Name: <input type = "text" name = "Sponsor_Name">
-                        <br/>
-    </form>
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             
@@ -56,37 +50,62 @@
                     </a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="./Has_joined.php">Has Joined</a>
-                    </div>
+                      <a class="dropdown-item" href="./Is_sponsor_of.php">Team Sponsor</a>                    </div>
                   </li>
               </ul>
-          
-                       
-            
         </nav>
-        <table class="tableform" align="center" >
+
+
+        <table class="tableform" align="center">
+        <?php
+        $db_host='127.0.0.1';
+        $db_user='root';
+        $db_pass='';
+        $db_name='gamedb';
+
+        $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+        if (!$conn)
+        {
+            die ('failed to connect mysql database'.mysql_connect_error());
+        }
+
+        $sql = 'select * from sponsor';
+        $query = mysqli_query($conn,$sql);
+
+            if (!$query)
+            {
+                die ('error found'.mysqli_error($conn));
+            }
+
+            echo "
+            <table class='tableform' align='center'>
+            <tr>
             <th>Sponsor_ID</th>
             <th>Sponsor_Name</th>
-        <tr>
-            <td >001</td>
-            <td>Bill Gates</td>
-        </tr>
-        <tr>
-            <td >002</td>
-            <td>John</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-         </tr>
-    </table><br>
+            </tr>";
+
+            while ($row = mysqli_fetch_array($query))
+            {
+                echo ' <tr>
+                <td>'.$row['Sponsor_ID'].'</td>
+                <td>'.$row['Sponsor_Name'].'</td>
+                </tr>';
+            }
+
+        echo "</table>";
+        ?>
+        </table>
+
+
+        <div align = "center">
+        <form action="Sponsor_insert.php" method = "post" class="tableform" align = "left">
+            Sponsor_ID: <input type = "text" name = "Sponsor_ID">
+                        <br/>
+            Sponsor_Name: <input type = "text" name = "Sponsor_Name">
+                        <br/>
+            <input type="submit" value ="Insert">
+        </form>
+        </div>
     <div align=center>
         <a class="btn" href="#">1</a>
     </div>

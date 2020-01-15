@@ -11,6 +11,8 @@
     <body>
 
 
+
+
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             
             <a class="navbar-brand" href="../index.php"><img src="../img/db.png" class="logo">Esports Database</a>
@@ -70,7 +72,7 @@
             die ('failed to connect mysql database'.mysql_connect_error());
         }
 
-        $sql = 'select * from game';
+        $sql = 'select * from is_sponsor';
         $query = mysqli_query($conn,$sql);
 
             if (!$query)
@@ -81,19 +83,15 @@
             echo "
             <table class='tableform' align='center'>
             <tr>
-            <th>Game_title</th>
-            <th>Category</th>
-            <th>Game_ID</th>
-            <th>G_Producer_ID</th>
+            <th>Team_ID</th>
+            <th>Sponsor_ID</th>
             </tr>";
 
             while ($row = mysqli_fetch_array($query))
             {
                 echo ' <tr>
-                <td>'.$row['Game_title'].'</td>
-                <td>'.$row['Category'].'</td>
-                <td>'.$row['Game_ID'].'</td>
-                <td>'.$row['G_Producer_ID'].'</td>
+                <td>'.$row['Team_ID'].'</td>
+                <td>'.$row['Sponsor_ID'].'</td>
                 </tr>';
             }
 
@@ -103,16 +101,12 @@
 
 
         <div align = "center">
-        <form action="Game_insert.php" method = "post" class="tableform" align = "left">
-            Game_title: <input type = "text" name = "Game_title">
+        <form action="Is_sponsor_of_insert.php" method = "post" class="tableform" align = "left">
+            Team_ID: <input type = "text" name = "Team_ID">
                         <br/>
-            Category: <input type = "text" name = "Category">
+            Sponsor_ID: <input type = "text" name = "Sponsor_ID">
                         <br/>
-            Game_ID: <input type = "text" name = "Game_ID">
-                        <br/>
-            G_Producer_ID: <input type = "text" name = "G_Producer_ID">
-                        <br/>
-            <input type="submit" value ="Insert">            
+            <input type="submit" value ="Insert">
     </form>
     </div>
     <div align=center>

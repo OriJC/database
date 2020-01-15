@@ -14,13 +14,13 @@
         echo 'Database Not Selected';
     }
 
-    $Manager_ID  = $_POST['Manager_ID'];
-    $T_M_SSID = $_POST['T_M_SSID'];
-    $T_Coach_ID = $_POST['T_Coach_ID'];
-    $T_Game_ID = $_POST['T_Game_ID'];
+    $Salary  = $_POST['Salary'];
+    $Nationality = $_POST['Nationality'];
+    $Name = $_POST['Name'];
+    $M_SSID = $_POST['M_SSID'];
 
-    $sql = "INSERT INTO manager (Manager_ID, T_M_SSID, T_Coach_ID, T_Game_ID) 
-            VALUES ('$Manager_ID', '$T_M_SSID', '$T_Coach_ID', '$T_Game_ID')";
+    $sql = "INSERT INTO manager (Salary, Nationality, Name, M_SSID) 
+            VALUES ('$Salary', '$Nationality', '$Name', '$M_SSID')";
 
     if(!mysqli_query($conn, $sql))
     {

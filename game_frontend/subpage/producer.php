@@ -9,12 +9,7 @@
     </head>
 
     <body>
-    <form>
-            Company_Name: <input type = "text" name = "Company_Name">
-                        <br/>
-            Company_ID: <input type = "text" name = "Company_ID">
-                        <br/>
-    </form>
+
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             
             <a class="navbar-brand" href="../index.php"><img src="../img/db.png" class="logo">Esports Database</a>
@@ -55,37 +50,62 @@
                     </a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="./Has_joined.php">Has Joined</a>
-                    </div>
+                      <a class="dropdown-item" href="./Is_sponsor_of.php">Team Sponsor</a>                    </div>
                   </li>
               </ul>
-          
-                       
-            
         </nav>
-        <table class="tableform" align="center" >
-            <th>Company_ID</th>
+
+
+        <table class="tableform" align="center">
+        <?php
+        $db_host='127.0.0.1';
+        $db_user='root';
+        $db_pass='';
+        $db_name='gamedb';
+
+        $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+        if (!$conn)
+        {
+            die ('failed to connect mysql database'.mysql_connect_error());
+        }
+
+        $sql = 'select * from game_producer';
+        $query = mysqli_query($conn,$sql);
+
+            if (!$query)
+            {
+                die ('error found'.mysqli_error($conn));
+            }
+
+            echo "
+            <table class='tableform' align='center'>
+            <tr>
             <th>Company_Name</th>
-        <tr>
-            <td >001</td>
-            <td>Bill Gates</td>
-        </tr>
-        <tr>
-            <td >002</td>
-            <td>John</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-         </tr>
-    </table><br>
+            <th>Company_ID</th>
+            </tr>";
+
+            while ($row = mysqli_fetch_array($query))
+            {
+                echo ' <tr>
+                <td>'.$row['Company_Name'].'</td>
+                <td>'.$row['Company_ID'].'</td>
+                </tr>';
+            }
+
+        echo "</table>";
+        ?>
+        </table>
+
+
+        <div align = "center">
+        <form action="producer_insert.php" method = "post" class="tableform" align = "left">
+            Company_Name: <input type = "text" name = "Company_Name">
+                        <br/>
+            Company_ID: <input type = "text" name = "Company_ID">
+                        <br/>
+            <input type="submit" value ="Insert">
+        </form>
+        </div>
     <div align=center>
         <a class="btn" href="#">1</a>
     </div>

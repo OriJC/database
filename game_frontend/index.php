@@ -25,7 +25,7 @@
                         <a class="dropdown-item" href="./subpage/Manager.php">Manager</a>
                         <a class="dropdown-item" href="./subpage/playerlist.php">Player</a>
                         <a class="dropdown-item" href="./subpage/Sponsor.php">Sponsor</a>
-                        <a class="dropdown-item" href="./subpage/Coach.php">Coach</a>
+                        <a class="dropdown-item" href="./subpage/coach.php">coach</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -34,7 +34,6 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="./subpage/competition.php">Competition</a>
-                        <a class="dropdown-item" href="./subpage/Competitionhist.php">History</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -51,8 +50,8 @@
                       Relation
                     </a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="./subpage/Has_played.php">Has Played</a>
                       <a class="dropdown-item" href="./subpage/Has_joined.php">Has Joined</a>
+                      <a class="dropdown-item" href="./subpage/Is_sponsor_of.php">Team Sponsor</a>
                     </div>
                   </li>
               </ul>
@@ -125,7 +124,7 @@
             <th>Team_Name</th>
             <th>Team_ID</th>
             <th>T_M_SSID</th>
-            <th>T_Coach_ID</th>
+            <th>T_coach_ID</th>
             <th>T_Game_ID</th>
             </tr>";
 
@@ -136,7 +135,7 @@
                 <td>'.$row['Team_Name'].'</td>
                 <td>'.$row['Team_ID'].'</td>
                 <td>'.$row['T_M_SSID'].'</td>
-                <td>'.$row['T_Coach_ID'].'</td>
+                <td>'.$row['T_coach_ID'].'</td>
                 <td>'.$row['T_Game_ID'].'</td>
                 </tr>';
             }

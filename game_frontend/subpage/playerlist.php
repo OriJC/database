@@ -9,20 +9,7 @@
     </head>
 
     <body>
-    <form>
-            Name: <input type = "text" name = "Name">
-                        <br/>
-            Salary: <input type = "text" name = "Salary">
-                        <br/>
-            Nationality: <input type = "text" name = "Nationality">
-                        <br/>
-            P_SSID: <input type = "text" name = "P_SSID">
-                        <br/>
-            P_Team_ID: <input type = "text" name = "P_Team_ID">
-                        <br/>
-            P_Game_ID: <input type = "text" name = "P_Game_ID">
-                        <br/>
-    </form>
+
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             
@@ -64,61 +51,78 @@
                     </a>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="./Has_joined.php">Has Joined</a>
-                    </div>
+                      <a class="dropdown-item" href="./Is_sponsor_of.php">Team Sponsor</a>                    </div>
                   </li>
               </ul>
-          
-                       
-            
         </nav>
-        <table class="tableform" align="center" >
-            <th>P_SSID</th>
+
+
+        <table class="tableform" align="center">
+        <?php
+        $db_host='127.0.0.1';
+        $db_user='root';
+        $db_pass='';
+        $db_name='gamedb';
+
+        $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+        if (!$conn)
+        {
+            die ('failed to connect mysql database'.mysql_connect_error());
+        }
+
+        $sql = 'select * from player';
+        $query = mysqli_query($conn,$sql);
+
+            if (!$query)
+            {
+                die ('error found'.mysqli_error($conn));
+            }
+
+            echo "
+            <table class='tableform' align='center'>
+            <tr>
             <th>Name</th>
             <th>Salary</th>
             <th>Nationality</th>
+            <th>P_SSID</th>
             <th>P_Team_ID</th>
             <th>P_Game_ID</th>
-        <tr>
-            <td >001</td>
-            <td>Hono</td>
-            <td>32000</td>
-            <td>JP</td>
-            <td>0022</td>
-            <td>55</td>
-        </tr>
-        <tr>
-            <td >002</td>
-            <td>uui</td>
-            <td>31000</td>
-            <td>TW</td>
-            <td>0022</td>
-            <td>70</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-         </tr>
-    </table><br>
+            </tr>";
+
+            while ($row = mysqli_fetch_array($query))
+            {
+                echo ' <tr>
+                <td>'.$row['Name'].'</td>
+                <td>'.$row['Salary'].'</td>
+                <td>'.$row['Nationality'].'</td>
+                <td>'.$row['P_SSID'].'</td>
+                <td>'.$row['P_Team_ID'].'</td>
+                <td>'.$row['P_Game_ID'].'</td>
+                </tr>';
+            }
+
+        echo "</table>";
+        ?>
+        </table>
+
+
+        <div align = "center">
+        <form action="playerlist_insert.php" method = "post" class="tableform" align = "left">
+            Name: <input type = "text" name = "Name">
+                        <br/>
+            Salary: <input type = "text" name = "Salary">
+                        <br/>
+            Nationality: <input type = "text" name = "Nationality">
+                        <br/>
+            P_SSID: <input type = "text" name = "P_SSID">
+                        <br/>
+            P_Team_ID: <input type = "text" name = "P_Team_ID">
+                        <br/>
+            P_Game_ID: <input type = "text" name = "P_Game_ID">
+                        <br/>
+            <input type="submit" value ="Insert">
+        </form>
+        </div>
     <div align=center>
         <a class="btn" href="#">1</a>
     </div>
