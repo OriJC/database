@@ -10,6 +10,21 @@
     </head>
 
     <body>
+        <form>
+            Team_Color: <input type = "text" name = "Team_Color">
+                        <br/>
+            Team_Name: <input type = "text" name = "Team_Name">
+                        <br/>
+            Team_ID: <input type = "text" name = "Team_ID">
+                        <br/>
+            T_M_SSID: <input type = "text" name = "T_M_SSID">
+                        <br/>
+            T_Coach_ID: <input type = "text" name = "T_Coach_ID">
+                        <br/>
+            T_Game_ID: <input type = "text" name = "T_Game_ID">
+                        <br/>
+        </form>
+
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             
             <a class="navbar-brand" href="../index.php"><img src="../img/db.png" class="logo">Esports Database</a>
@@ -61,9 +76,9 @@
         </nav>
         <table class="tableform" align="center">
         <?php
-        $db_host='localhost';
-        $db_user='user';
-        $db_pass='1234';
+        $db_host='127.0.0.1';
+        $db_user='root';
+        $db_pass='';
         $db_name='gamedb';
 
         $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
