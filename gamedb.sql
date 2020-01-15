@@ -33,6 +33,14 @@ CREATE TABLE `coach` (
   `Coach_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- 傾印資料表的資料 `coach`
+--
+
+INSERT INTO `coach` (`Coach_Name`, `Coach_ID`) VALUES
+('coach2', 2002),
+('coach_test', 2008);
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +56,14 @@ CREATE TABLE `competition` (
   `Game_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- 傾印資料表的資料 `competition`
+--
+
+INSERT INTO `competition` (`Arena`, `Regional`, `Name`, `prize`, `Com_ID`, `Game_ID`) VALUES
+('arena1', 'Taiwan', 'competition1', 10000, 6001, 4001),
+('arena_test', 'regional_test', 'competition_test', 10003, 6002, 4002);
+
 -- --------------------------------------------------------
 
 --
@@ -55,11 +71,19 @@ CREATE TABLE `competition` (
 --
 
 CREATE TABLE `game` (
-  `Game_title` int(250) NOT NULL,
+  `Game_title` varchar(250) NOT NULL,
   `Category` varchar(250) DEFAULT NULL,
   `Game_ID` int(11) NOT NULL,
   `G_Producer_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `game`
+--
+
+INSERT INTO `game` (`Game_title`, `Category`, `Game_ID`, `G_Producer_ID`) VALUES
+('lol', 'lol', 4001, 3001),
+('game_test', 'g_category_test', 4002, 3002);
 
 -- --------------------------------------------------------
 
@@ -72,6 +96,14 @@ CREATE TABLE `game_producer` (
   `Company_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- 傾印資料表的資料 `game_producer`
+--
+
+INSERT INTO `game_producer` (`Company_Name`, `Company_ID`) VALUES
+('garena', 3001),
+('company_test', 3002);
+
 -- --------------------------------------------------------
 
 --
@@ -83,16 +115,12 @@ CREATE TABLE `has_joined` (
   `Com_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- 資料表結構 `has_played`
+-- 傾印資料表的資料 `has_joined`
 --
 
-CREATE TABLE `has_played` (
-  `P_SSID` int(11) NOT NULL,
-  `Game_ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `has_joined` (`T_SSID`, `Com_ID`) VALUES
+(5002, 6002);
 
 -- --------------------------------------------------------
 
@@ -104,6 +132,13 @@ CREATE TABLE `is_sponsor` (
   `Team_ID` int(11) NOT NULL,
   `Sponsor_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `is_sponsor`
+--
+
+INSERT INTO `is_sponsor` (`Team_ID`, `Sponsor_ID`) VALUES
+(5002, 7002);
 
 -- --------------------------------------------------------
 
@@ -117,6 +152,14 @@ CREATE TABLE `manager` (
   `Name` varchar(250) NOT NULL,
   `M_SSID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `manager`
+--
+
+INSERT INTO `manager` (`Salary`, `Nationality`, `Name`, `M_SSID`) VALUES
+(10000, 'nation1', 'manager1', 1001),
+(10000, 'nation_test', 'manager_test', 1002);
 
 -- --------------------------------------------------------
 
@@ -133,6 +176,14 @@ CREATE TABLE `player` (
   `P_Game_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- 傾印資料表的資料 `player`
+--
+
+INSERT INTO `player` (`Name`, `Salary`, `Nationality`, `P_SSID`, `P_Team_ID`, `P_Game_ID`) VALUES
+('player1', 10000, 'Taiwan', 9001, 5001, 4001),
+('player_test', 3939, 'nation_test', 9002, 5002, 4002);
+
 -- --------------------------------------------------------
 
 --
@@ -143,6 +194,14 @@ CREATE TABLE `sponsor` (
   `Sponsor_ID` int(11) NOT NULL,
   `Sponsor_Name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `sponsor`
+--
+
+INSERT INTO `sponsor` (`Sponsor_ID`, `Sponsor_Name`) VALUES
+(7001, 'sponsor1'),
+(7002, 'sponsor_test');
 
 -- --------------------------------------------------------
 
@@ -158,6 +217,14 @@ CREATE TABLE `team` (
   `T_Coach_ID` int(11) NOT NULL,
   `T_Game_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `team`
+--
+
+INSERT INTO `team` (`Team_Color`, `Team_Name`, `Team_ID`, `T_M_SSID`, `T_Coach_ID`, `T_Game_ID`) VALUES
+('color1', 'team1', 5001, 1001, 2002, 4001),
+('color_test', 'team_test', 5002, 1002, 2008, 4002);
 
 --
 -- 已傾印資料表的索引
@@ -195,13 +262,6 @@ ALTER TABLE `game_producer`
 ALTER TABLE `has_joined`
   ADD PRIMARY KEY (`T_SSID`,`Com_ID`),
   ADD KEY `Com_ID` (`Com_ID`);
-
---
--- 資料表索引 `has_played`
---
-ALTER TABLE `has_played`
-  ADD PRIMARY KEY (`P_SSID`,`Game_ID`),
-  ADD KEY `has_played_ibfk_1` (`Game_ID`);
 
 --
 -- 資料表索引 `is_sponsor`
@@ -261,12 +321,6 @@ ALTER TABLE `game`
 ALTER TABLE `has_joined`
   ADD CONSTRAINT `has_joined_ibfk_1` FOREIGN KEY (`Com_ID`) REFERENCES `competition` (`Com_ID`) ON UPDATE CASCADE,
   ADD CONSTRAINT `has_joined_ibfk_2` FOREIGN KEY (`T_SSID`) REFERENCES `team` (`Team_ID`) ON UPDATE CASCADE;
-
---
--- 資料表的限制式 `has_played`
---
-ALTER TABLE `has_played`
-  ADD CONSTRAINT `has_played_ibfk_1` FOREIGN KEY (`Game_ID`) REFERENCES `game` (`Game_ID`) ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `is_sponsor`
