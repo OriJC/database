@@ -96,53 +96,7 @@
             
         </div>  
 
-        <?php
-
-        $db_host='localhost';
-        $db_user='user';
-        $db_pass='1234';
-        $db_name='gamedb';
-
-        $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-        if (!$conn)
-        {
-            die ('failed to connect mysql database'.mysql_connect_error());
-        }
-
-        $sql = 'select * from team';
-        $query = mysqli_query($conn,$sql);
-
-            if (!$query)
-            {
-                die ('error found'.mysqli_error($conn));
-            }
-
-            echo "
-            <table class='table'>
-            <tr>
-            <th>Team_Color</th>
-            <th>Team_Name</th>
-            <th>Team_ID</th>
-            <th>T_M_SSID</th>
-            <th>T_coach_ID</th>
-            <th>T_Game_ID</th>
-            </tr>";
-
-            while ($row = mysqli_fetch_array($query))
-            {
-                echo ' <tr>
-                <td>'.$row['Team_Color'].'</td>
-                <td>'.$row['Team_Name'].'</td>
-                <td>'.$row['Team_ID'].'</td>
-                <td>'.$row['T_M_SSID'].'</td>
-                <td>'.$row['T_coach_ID'].'</td>
-                <td>'.$row['T_Game_ID'].'</td>
-                </tr>';
-            }
-
-        echo "</table>";
-
-        ?>
+        
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
