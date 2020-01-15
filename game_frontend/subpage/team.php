@@ -10,21 +10,6 @@
     </head>
 
     <body>
-        <form>
-            Team_Color: <input type = "text" name = "Team_Color">
-                        <br/>
-            Team_Name: <input type = "text" name = "Team_Name">
-                        <br/>
-            Team_ID: <input type = "text" name = "Team_ID">
-                        <br/>
-            T_M_SSID: <input type = "text" name = "T_M_SSID">
-                        <br/>
-            T_Coach_ID: <input type = "text" name = "T_Coach_ID">
-                        <br/>
-            T_Game_ID: <input type = "text" name = "T_Game_ID">
-                        <br/>
-        </form>
-
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             
             <a class="navbar-brand" href="../index.php"><img src="../img/db.png" class="logo">Esports Database</a>
@@ -39,7 +24,7 @@
                         <a class="dropdown-item" href="./Manager.php">Manager</a>
                         <a class="dropdown-item" href="./playerlist.php">Player</a>
                         <a class="dropdown-item" href="./Sponsor.php">Sponsor</a>
-                        <a class="dropdown-item" href="./Coach.php">Coach</a>
+                        <a class="dropdown-item" href="./coach.php">coach</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -48,7 +33,6 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="./competition.php">Competition</a>
-                        <a class="dropdown-item" href="./Competitionhist.php">History</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -65,7 +49,6 @@
                       Relation
                     </a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="./Has_played.php">Has Played</a>
                       <a class="dropdown-item" href="./Has_joined.php">Has Joined</a>
                     </div>
                   </li>
@@ -74,6 +57,7 @@
                        
             
         </nav>
+        
         <table class="tableform" align="center">
         <?php
         $db_host='127.0.0.1';
@@ -120,56 +104,24 @@
 
         echo "</table>";
         ?>
-
         </table>
-        <table class="tableform" align="center" >
-            <th>Team_ID</th>
-            <th>Team_Name</th>
-            <th>Team_color</th>
-            <th>T_M_SSID</th>
-            <th>T_Coach_ID</th>
-            <th>T_Game_ID</th>
-        <tr>
-            <td >001</td>
-            <td>SKT</td>
-            <td>red</td>
-            <td>231</td>
-            <td>0022</td>
-            <td>55</td>
-        </tr>
-        <tr>
-            <td >002</td>
-            <td>ui</td>
-            <td>orange</td>
-            <td>2313</td>
-            <td>0022</td>
-            <td>70</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-         </tr>
-    </table><br>
+    <div align = "center">
+        <form action="team_insert.php" method = "post" class="tableform" align = "left">
+            Team_Color: <input type = "text" name = "Team_Color">
+                        <br/>
+            Team_Name: <input type = "text" name = "Team_Name">
+                        <br/>
+            Team_ID: <input type = "text" name = "Team_ID">
+                        <br/>
+            T_M_SSID: <input type = "text" name = "T_M_SSID">
+                        <br/>
+            T_Coach_ID: <input type = "text" name = "T_Coach_ID">
+                        <br/>
+            T_Game_ID: <input type = "text" name = "T_Game_ID">
+                        <br/>
+            <input type="submit" value ="Insert">
+        </form>
+    </div>
     <div align=center>
         <a class="btn" href="#">1</a>
     </div>

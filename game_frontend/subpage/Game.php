@@ -9,6 +9,17 @@
     </head>
 
     <body>
+    <form>
+            Game_title: <input type = "text" name = "Game_title">
+                        <br/>
+            Category: <input type = "text" name = "Category">
+                        <br/>
+            Game_ID: <input type = "text" name = "Game_ID">
+                        <br/>
+            G_Producer_ID: <input type = "text" name = "G_Producer_ID">
+                        <br/>
+    </form>
+
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             
             <a class="navbar-brand" href="../index.php"><img src="../img/db.png" class="logo">Esports Database</a>
@@ -23,7 +34,7 @@
                         <a class="dropdown-item" href="./Manager.php">Manager</a>
                         <a class="dropdown-item" href="./playerlist.php">Player</a>
                         <a class="dropdown-item" href="./Sponsor.php">Sponsor</a>
-                        <a class="dropdown-item" href="./Coach.php">Coach</a>
+                        <a class="dropdown-item" href="./coach.php">coach</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -32,7 +43,6 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="./competition.php">Competition</a>
-                        <a class="dropdown-item" href="./Competitionhist.php">History</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -49,7 +59,6 @@
                       Relation
                     </a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="./Has_played.php">Has Played</a>
                       <a class="dropdown-item" href="./Has_joined.php">Has Joined</a>
                     </div>
                   </li>

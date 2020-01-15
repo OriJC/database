@@ -9,12 +9,6 @@
     </head>
 
     <body>
-    <form>
-            Company_Name: <input type = "text" name = "Company_Name">
-                        <br/>
-            Company_ID: <input type = "text" name = "Company_ID">
-                        <br/>
-    </form>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             
             <a class="navbar-brand" href="../index.php"><img src="../img/db.png" class="logo">Esports Database</a>
@@ -29,7 +23,7 @@
                         <a class="dropdown-item" href="./Manager.php">Manager</a>
                         <a class="dropdown-item" href="./playerlist.php">Player</a>
                         <a class="dropdown-item" href="./Sponsor.php">Sponsor</a>
-                        <a class="dropdown-item" href="./coach.php">coach</a>
+                        <a class="dropdown-item" href="./coach.php">Coach</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -62,30 +56,56 @@
                        
             
         </nav>
+
+
         <table class="tableform" align="center" >
-            <th>Company_ID</th>
-            <th>Company_Name</th>
-        <tr>
-            <td >001</td>
-            <td>Bill Gates</td>
-        </tr>
-        <tr>
-            <td >002</td>
-            <td>John</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-         </tr>
-    </table><br>
+        <?php
+        $db_host='127.0.0.1';
+        $db_user='root';
+        $db_pass='';
+        $db_name='gamedb';
+
+        $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+        if (!$conn)
+        {
+            die ('failed to connect mysql database'.mysql_connect_error());
+        }
+
+        $sql = 'select * from coach';
+        $query = mysqli_query($conn,$sql);
+
+            if (!$query)
+            {
+                die ('error found'.mysqli_error($conn));
+            }
+
+            echo "
+            <table class='tableform' align='center'>
+            <tr>
+            <th>Coach_Name</th>
+            <th>Coach_ID</th>
+            </tr>";
+
+            while ($row = mysqli_fetch_array($query))
+            {
+                echo ' <tr>
+                <td>'.$row['Coach_Name'].'</td>
+                <td>'.$row['Coach_ID'].'</td>
+                </tr>';
+            }
+
+        echo "</table>";
+        ?>
+        </table>
+        <div align = "center">
+        <form action="coach_insert.php" method = "post" class="tableform" align = "left">
+            Coach_Name: <input type = "text" name = "Coach_Name">
+                        <br/>
+            Coach_ID: <input type = "text" name = "Coach_ID">
+                        <br/>
+            <input type="submit" value ="Insert">
+        </form>
+        </div>
     <div align=center>
         <a class="btn" href="#">1</a>
     </div>

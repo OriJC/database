@@ -23,7 +23,7 @@
                         <a class="dropdown-item" href="./Manager.php">Manager</a>
                         <a class="dropdown-item" href="./playerlist.php">Player</a>
                         <a class="dropdown-item" href="./Sponsor.php">Sponsor</a>
-                        <a class="dropdown-item" href="./Coach.php">Coach</a>
+                        <a class="dropdown-item" href="./coach.php">coach</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -32,7 +32,6 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="./competition.php">Competition</a>
-                        <a class="dropdown-item" href="./Competitionhist.php">History</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -49,7 +48,6 @@
                       Relation
                     </a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="./Has_played.php">Has Played</a>
                       <a class="dropdown-item" href="./Has_joined.php">Has Joined</a>
                     </div>
                   </li>
@@ -58,48 +56,75 @@
                        
             
         </nav>
-        <table class="tableform" align="center" >
-            <th>Com_ID</th>
-            <th>Name</th>
+        <table class="tableform" align="center">
+        <?php
+        $db_host='127.0.0.1';
+        $db_user='root';
+        $db_pass='';
+        $db_name='gamedb';
+
+        $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+        if (!$conn)
+        {
+            die ('failed to connect mysql database'.mysql_connect_error());
+        }
+
+        $sql = 'select * from competition';
+        $query = mysqli_query($conn,$sql);
+
+            if (!$query)
+            {
+                die ('error found'.mysqli_error($conn));
+            }
+
+            echo "
+            <table class='tableform' align='center'>
+            <tr>
             <th>Arena</th>
-            <th>C_Game_ID</th>
             <th>Regional</th>
-        <tr>
-            <td >001</td>
-            <td>LMS</td>
-            <td>SSA</td>
-            <td>231</td>
-            <td>CN</td>
-        </tr>
-        <tr>
-            <td >002</td>
-            <td>LPL</td>
-            <td>SSA</td>
-            <td>2313</td>
-            <td>CN</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-         </tr>
-    </table><br>
+            <th>Name</th>
+            <th>prize</th>
+            <th>Com_ID</th>
+            <th>Game_ID</th>
+            </tr>";
+
+            while ($row = mysqli_fetch_array($query))
+            {
+                echo ' <tr>
+                <td>'.$row['Arena'].'</td>
+                <td>'.$row['Regional'].'</td>
+                <td>'.$row['Name'].'</td>
+                <td>'.$row['prize'].'</td>
+                <td>'.$row['Com_ID'].'</td>
+                <td>'.$row['Game_ID'].'</td>
+                </tr>';
+            }
+
+        echo "</table>";
+        ?>
+        </table>
+
+
+
+        <div align = "center">
+        <form action="comp_insert.php" method = "post" class="tableform" align = "left">
+            Arena: <input type = "text" name = "Arena">
+                        <br/>
+            Regional: <input type = "text" name = "Regional">
+                        <br/>
+            Name: <input type = "text" name = "Name">
+                        <br/>
+            prize: <input type = "text" name = "prize">
+                        <br/>
+            Com_ID: <input type = "text" name = "Com_ID">
+                        <br/>
+            Game_ID: <input type = "text" name = "Game_ID">
+                        <br/>
+            <input type="submit" value ="Insert">
+        </form>
+        </div>
+
+
     <div align=center>
         <a class="btn" href="#">1</a>
     </div>
